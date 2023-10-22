@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-u-(mq!t(++6r)ro$!3ulnawmgpkas09=y29lsv@jp8jxz+w&27
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [    'fci-platform-db.onrender.com',
+]
 
 
 # Application definition
