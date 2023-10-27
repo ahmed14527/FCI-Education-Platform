@@ -65,6 +65,7 @@ class Video(models.Model):
     course = models.ForeignKey(Course , null = False , on_delete=models.CASCADE)
     video_id = models.CharField(max_length = 100 , null = False)
     video_file = models.FileField(upload_to='files/upload_path')
+    is_preview = models.BooleanField(default = False)
 
     def __str__(self):
         return self.title

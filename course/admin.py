@@ -41,8 +41,8 @@ class UserCourseAdmin(admin.ModelAdmin):
     list_filter = ['user', 'course', 'date']
     search_fields = ['user__username', 'course__name']
 
-
+@admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
     list_display = ['title', 'course', 'serial_number']
     list_filter = ['course']
-    fields = ['title', 'course', 'serial_number', 'video_id', 'video_file']  
+    fields = ['title', 'course', 'serial_number','is_preview', 'video_id', 'video_file']  
