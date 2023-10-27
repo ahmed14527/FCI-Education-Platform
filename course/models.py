@@ -56,18 +56,14 @@ class UserCourse(models.Model):
         return f'{self.user.username} - {self.course.name}'
     
     
-def upload_path(instance, filename):
-    """Generate the upload path for the video file."""
-    return f'course_videos/{instance.course.slug}/{filename}'
+
 
 
 class Video(models.Model):
     title  = models.CharField(max_length = 100 , null = False)
     course = models.ForeignKey(Course , null = False , on_delete=models.CASCADE)
-    serial_number = models.IntegerField(null=False)
     video_id = models.CharField(max_length = 100 , null = False)
-    is_preview = models.BooleanField(default = False)
-    video_file = models.FileField(upload_to=upload_path)
+    video_file = models.FileField(upload_to='files/upload_path')
 
     def __str__(self):
         return self.title
