@@ -42,7 +42,7 @@ class UserCourseAdmin(admin.ModelAdmin):
     search_fields = ['user__username', 'course__name']
 
 
-@admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
-    list_display = ['title', 'course', 'video_id']
+    list_display = ['title', 'course', 'serial_number']
     list_filter = ['course']
+    fields = ['title', 'course', 'serial_number', 'video_id', 'video_file']  

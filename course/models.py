@@ -61,6 +61,7 @@ class UserCourse(models.Model):
 
 class Video(models.Model):
     title  = models.CharField(max_length = 100 , null = False)
+    serial_number = models.IntegerField(null=True, blank=True)
     course = models.ForeignKey(Course , null = False , on_delete=models.CASCADE)
     video_id = models.CharField(max_length = 100 , null = False)
     video_file = models.FileField(upload_to='files/upload_path')

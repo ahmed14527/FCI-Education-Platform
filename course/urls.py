@@ -30,8 +30,6 @@ router.register(r'learnings', LearningViewSet)
 router.register(r'create-learnings', CreateLearningViewSet, basename='create-learnings')
 router.register(r'user-courses', UserCourseViewSet)
 router.register(r'create-user-course', CreateUserCourseViewSet, basename='create-user-course')
-router.register(r'payments', PaymentViewSet)
-router.register(r'create-payment', CreatePaymentViewSet, basename='create-payment')
 router.register(r'videos', VideoViewSet)
 router.register(r'create-videos', CreateVideoViewSet, basename='create-videos')
 
