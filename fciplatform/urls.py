@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
     path('', include('course.urls')),
+    path('', include('Assignment.urls')),
     path('users/', UserListView.as_view(), name='user-list'),
     path('', include('instructors.urls')),
 

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'instructors',
     'rest_framework',
         'knox',
+        'Assignment',
 
 
 ]
