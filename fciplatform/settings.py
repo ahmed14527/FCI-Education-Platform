@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     'course',
     'accounts',
     'instructors',
+    'rest_framework',
+        'knox',
+
+
 ]
 
 MIDDLEWARE = [

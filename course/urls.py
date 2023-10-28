@@ -1,38 +1,37 @@
-from django.urls import include, path
+from django.urls import path, include
 from rest_framework import routers
 from .views import (
-    CourseViewSet,
-    TagViewSet,
     CategoryViewSet,
-    PrerequisiteViewSet,
-    LearningViewSet,
-    UserCourseViewSet,
-    VideoViewSet,
-    CreateCourseViewSet,
-    CreateTagViewSet,
     CreateCategoryViewSet,
-    CreateUserCourseViewSet,
-    CreateVideoViewSet,
-    CreateLearningViewSet,
+    CourseViewSet,
+    CreateCourseViewSet,
+    TagViewSet,
+    CreateTagViewSet,
+    PrerequisiteViewSet,
     CreatePrerequisiteViewSet,
+    LearningViewSet,
+    CreateLearningViewSet,
+    UserCourseViewSet,
+    CreateUserCourseViewSet,
+    VideoViewSet,
+    CreateVideoViewSet,
 )
 
 router = routers.DefaultRouter()
 router.register(r'categories', CategoryViewSet)
-router.register(r'create-category', CreateCategoryViewSet, basename='create-category')
+router.register(r'create-categories', CreateCategoryViewSet)
 router.register(r'courses', CourseViewSet)
-router.register(r'create-course', CreateCourseViewSet, basename='create-course')
+router.register(r'create-courses', CreateCourseViewSet)
 router.register(r'tags', TagViewSet)
-router.register(r'create-tag', CreateTagViewSet, basename='create-tag')
+router.register(r'create-tags', CreateTagViewSet)
 router.register(r'prerequisites', PrerequisiteViewSet)
-router.register(r'create-prerequisites', CreatePrerequisiteViewSet, basename='create-prerequisites')
+router.register(r'create-prerequisites', CreatePrerequisiteViewSet)
 router.register(r'learnings', LearningViewSet)
-router.register(r'create-learnings', CreateLearningViewSet, basename='create-learnings')
+router.register(r'create-learnings', CreateLearningViewSet)
 router.register(r'user-courses', UserCourseViewSet)
-router.register(r'create-user-course', CreateUserCourseViewSet, basename='create-user-course')
+router.register(r'create-user-courses', CreateUserCourseViewSet)
 router.register(r'videos', VideoViewSet)
-router.register(r'create-videos', CreateVideoViewSet, basename='create-videos')
-
+router.register(r'create-videos', CreateVideoViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
