@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('course.urls')),
     path('', include('Assignment.urls')),
     path('', include('notification.urls')),
+    path('', include('sheets.urls')),
     path('users/', UserListView.as_view(), name='user-list'),
     path('', include('instructors.urls')),
 

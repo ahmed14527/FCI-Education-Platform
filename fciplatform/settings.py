@@ -46,6 +46,7 @@ INSTALLED_APPS = [
         'knox',
         'Assignment',
         'notification',
+        'sheets',
 
 
 ]
