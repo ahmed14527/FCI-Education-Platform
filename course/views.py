@@ -2,86 +2,80 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAdminUser
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from rest_framework import generics
 from .models import Course, Tag, Prerequisite, Learning, UserCourse, Video, Category
 from .serializers import (
     CourseSerializer,
     CategorySerializer,
-    CreateCategorySerializer,
     TagSerializer,
     PrerequisiteSerializer,
     LearningSerializer,
     UserCourseSerializer,
     VideoSerializer,
-    CreateCourseSerializer,
-    CreateLearningSerializer,
-    CreatePrerequisiteSerializer,
-    CreateTagSerializer,
-    CreateUserCourseSerializer,
-    CreateVideoSerializer,
 )
-
-@method_decorator(login_required, name='dispatch')
-class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-
 
 class CreateCategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
-    serializer_class = CreateCategorySerializer
+    serializer_class = CategorySerializer
     permission_classes = [IsAdminUser]
 
 
 @method_decorator(login_required, name='dispatch')
-class CourseViewSet(viewsets.ModelViewSet):
+class CategoryListAPIView(generics.ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    
+    
+@method_decorator(login_required, name='dispatch')
+class CourseListAPIView(generics.ListAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
 
 class CreateCourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
-    serializer_class = CreateCourseSerializer
+    serializer_class = CourseSerializer
     permission_classes = [IsAdminUser]
 
 
 @method_decorator(login_required, name='dispatch')
-class TagViewSet(viewsets.ModelViewSet):
+class TagListAPIView(generics.ListAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
 
+
+
 class CreateTagViewSet(viewsets.ModelViewSet):
     queryset = Tag.objects.all()
-    serializer_class = CreateTagSerializer
+    serializer_class = TagSerializer
     permission_classes = [IsAdminUser]
 
 
 @method_decorator(login_required, name='dispatch')
-class PrerequisiteViewSet(viewsets.ModelViewSet):
+class PrerequisiteListAPIView(generics.ListAPIView):
     queryset = Prerequisite.objects.all()
     serializer_class = PrerequisiteSerializer
 
-
 class CreatePrerequisiteViewSet(viewsets.ModelViewSet):
     queryset = Prerequisite.objects.all()
-    serializer_class = CreatePrerequisiteSerializer
+    serializer_class = PrerequisiteSerializer
     permission_classes = [IsAdminUser]
 
 
 @method_decorator(login_required, name='dispatch')
-class LearningViewSet(viewsets.ModelViewSet):
+class LearningListAPIView(generics.ListAPIView):
     queryset = Learning.objects.all()
     serializer_class = LearningSerializer
 
-
 class CreateLearningViewSet(viewsets.ModelViewSet):
     queryset = Learning.objects.all()
-    serializer_class = CreateLearningSerializer
+    serializer_class = LearningSerializer
     permission_classes = [IsAdminUser]
 
 
 @method_decorator(login_required, name='dispatch')
-class UserCourseViewSet(viewsets.ModelViewSet):
+class UserCourseListAPIView(generics.ListAPIView):
     queryset = UserCourse.objects.all()
     serializer_class = UserCourseSerializer
 
@@ -89,16 +83,16 @@ class UserCourseViewSet(viewsets.ModelViewSet):
 @method_decorator(login_required, name='dispatch')
 class CreateUserCourseViewSet(viewsets.ModelViewSet):
     queryset = UserCourse.objects.all()
-    serializer_class = CreateUserCourseSerializer
+    serializer_class = UserCourseSerializer
 
 
 @method_decorator(login_required, name='dispatch')
-class VideoViewSet(viewsets.ModelViewSet):
+class VideoListAPIView(generics.ListAPIView):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
 
 
 class CreateVideoViewSet(viewsets.ModelViewSet):
     queryset = Video.objects.all()
-    serializer_class = CreateVideoSerializer
+    serializer_class = VideoSerializer
     permission_classes = [IsAdminUser]

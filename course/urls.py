@@ -1,38 +1,38 @@
 from django.urls import path, include
 from rest_framework import routers
 from .views import (
-    CategoryViewSet,
     CreateCategoryViewSet,
-    CourseViewSet,
+    CategoryListAPIView,
+    CourseListAPIView,
     CreateCourseViewSet,
-    TagViewSet,
+    TagListAPIView,
     CreateTagViewSet,
-    PrerequisiteViewSet,
+    PrerequisiteListAPIView,
     CreatePrerequisiteViewSet,
-    LearningViewSet,
+    LearningListAPIView,
     CreateLearningViewSet,
-    UserCourseViewSet,
+    UserCourseListAPIView,
     CreateUserCourseViewSet,
-    VideoViewSet,
+    VideoListAPIView,
     CreateVideoViewSet,
 )
 
 router = routers.DefaultRouter()
-router.register(r'categories', CategoryViewSet)
 router.register(r'create-categories', CreateCategoryViewSet)
-router.register(r'courses', CourseViewSet)
 router.register(r'create-courses', CreateCourseViewSet)
-router.register(r'tags', TagViewSet)
 router.register(r'create-tags', CreateTagViewSet)
-router.register(r'prerequisites', PrerequisiteViewSet)
 router.register(r'create-prerequisites', CreatePrerequisiteViewSet)
-router.register(r'learnings', LearningViewSet)
 router.register(r'create-learnings', CreateLearningViewSet)
-router.register(r'user-courses', UserCourseViewSet)
 router.register(r'create-user-courses', CreateUserCourseViewSet)
-router.register(r'videos', VideoViewSet)
 router.register(r'create-videos', CreateVideoViewSet)
 
 urlpatterns = [
+    path('categories/', CategoryListAPIView.as_view(), name='category-list'),
+    path('courses/', CourseListAPIView.as_view(), name='course-list'),
+    path('tags/', TagListAPIView.as_view(), name='tag-list'),
+    path('prerequisites/', PrerequisiteListAPIView.as_view(), name='prerequisite-list'),
+    path('learnings/', LearningListAPIView.as_view(), name='learning-list'),
+    path('user-courses/', UserCourseListAPIView.as_view(), name='user-course-list'),
+    path('videos/', VideoListAPIView.as_view(), name='video-list'),
     path('', include(router.urls)),
 ]
