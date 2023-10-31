@@ -28,6 +28,8 @@ urlpatterns = [
     path('', include('sheets.urls')),
     path('users/', UserListView.as_view(), name='user-list'),
     path('', include('instructors.urls')),
+    path('', include('communications.urls')),
+
 
 
 

@@ -43,10 +43,11 @@ INSTALLED_APPS = [
     'accounts',
     'instructors',
     'rest_framework',
-        'knox',
-        'Assignment',
-        'notification',
-        'sheets',
+    'knox',
+    'Assignment',
+    'notification',
+    'sheets',
+    'communications',
 
 
 ]
