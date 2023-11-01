@@ -25,14 +25,17 @@ class Option(models.Model):
 class MCQSubmission(models.Model):
     Submission = models.ForeignKey(MCQAssignment, on_delete=models.CASCADE, related_name='submissions')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='assignments')
+    
     def __str__(self):
-        return self.Submission
+        return f"MCQSubmission - User: {self.user}"
     
 class MCQAnswer(models.Model):
     question = models.ForeignKey(MCQQuestion, on_delete=models.CASCADE, related_name='answers')
     selected_option = models.ForeignKey(Option, on_delete=models.CASCADE)
+    
     def __str__(self):
-        return self.selected_option
+        return f"MCQAnswer - Selected Option: {self.selected_option}"
+    
     
     
     
