@@ -7,7 +7,6 @@ from .models import Comment
 from .serializers import CommentSerializer
 from rest_framework.permissions import IsAdminUser
 
-@method_decorator(login_required, name='dispatch')
 class CommentCreateView(generics.CreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
