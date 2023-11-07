@@ -1,5 +1,7 @@
 from django.urls import path, include
 from rest_framework import routers
+from .views import user_profile
+
 from .views import (
     CreateCategoryViewSet,
     CategoryListAPIView,
@@ -34,5 +36,6 @@ urlpatterns = [
     path('learnings/', LearningListAPIView.as_view(), name='learning-list'),
     path('user-courses/', UserCourseListAPIView.as_view(), name='user-course-list'),
     path('videos/', VideoListAPIView.as_view(), name='video-list'),
+    path('user-profile/', user_profile, name='user_profile'),
     path('', include(router.urls)),
 ]

@@ -19,6 +19,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
 from django.http import HttpResponse
+
 # Register API
 
 
@@ -60,16 +61,3 @@ class UserListView(generics.ListAPIView):
     serializer_class = RegisterSerializer
     
 
-from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
-from .serializers import UserSerializer
-
-@login_required
-def profile(request):
-    user = request.user
-    data = {
-        'id': user.id,
-        'username': user.username,
-        'email': user.email
-    }
-    return JsonResponse(data)
