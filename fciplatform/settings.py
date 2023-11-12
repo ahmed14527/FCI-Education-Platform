@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'Assignment',
     'sheets',
     'communications',
+       'drf_yasg',
+
 
 
 ]
@@ -138,3 +140,24 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+REST_FRAMEWORK = {
+    # ...
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+}
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        # If your API requires authentication, provide the necessary configuration here
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'scheme': 'Bearer',
+            'in': 'header',
+        },
+    },
+    'USE_SESSION_AUTH': False,  # If using token-based authentication
+}
+
