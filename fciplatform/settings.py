@@ -41,13 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'course',
     'accounts',
-    'instructors',
     'rest_framework',
     'knox',
     'Assignment',
     'sheets',
     'communications',
-       'drf_yasg',
+    'drf_yasg',
 
 
 
