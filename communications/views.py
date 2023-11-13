@@ -15,6 +15,5 @@ class CommentCreateView(generics.CreateAPIView):
 class CommentListAPIView(generics.ListAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    permission_classes = [IsAdminUser]
 
 
