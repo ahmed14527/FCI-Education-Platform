@@ -23,7 +23,6 @@ class CreateCategoryViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdminUser]
 
 
-@method_decorator(login_required, name='dispatch')
 class CategoryListAPIView(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
