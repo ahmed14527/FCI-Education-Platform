@@ -13,7 +13,6 @@ class MCQAssignmentViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdminUser]
 
     
-@method_decorator(login_required, name='dispatch')
 class MCQAssignmentListAPIView(generics.ListAPIView):
     queryset = MCQAssignment.objects.all()
     serializer_class = MCQAssignmentSerializer
@@ -24,7 +23,6 @@ class MCQQuestionViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdminUser]
 
     
-@method_decorator(login_required, name='dispatch')
 class MCQQuestionListAPIView(generics.ListAPIView):
     queryset = MCQQuestion.objects.all()
     serializer_class = MCQQuestionSerializer
@@ -36,7 +34,6 @@ class OptionViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdminUser]
 
 
-@method_decorator(login_required, name='dispatch')
 class OptionListAPIView(generics.ListAPIView):
     queryset = Option.objects.all()
     serializer_class = OptionSerializer
@@ -47,7 +44,6 @@ class MCQSubmissionViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdminUser]
 
     
-@method_decorator(login_required, name='dispatch')
 class MCQSubmissionListAPIView(generics.ListAPIView):
     queryset = MCQSubmission.objects.all()
     serializer_class = MCQSubmissionSerializer
@@ -57,7 +53,6 @@ class MCQAnswerViewSet(viewsets.ModelViewSet):
     serializer_class = MCQAnswerSerializer
     permission_classes = [IsAdminUser]
 
-@method_decorator(login_required, name='dispatch')
 class MCQAnswerListAPIView(generics.ListAPIView):
     queryset = MCQAnswer.objects.all()
     serializer_class = MCQAnswerSerializer

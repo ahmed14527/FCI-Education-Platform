@@ -6,7 +6,6 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from rest_framework import generics
 
-@method_decorator(login_required, name='dispatch')
 class SheetViewSet(viewsets.ModelViewSet):
     queryset = Sheet.objects.all()
     serializer_class = SheetSerializer
