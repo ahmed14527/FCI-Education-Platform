@@ -141,22 +141,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-REST_FRAMEWORK = {
-    # ...
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
-}
-
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        # If your API requires authentication, provide the necessary configuration here
-        'Bearer': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'scheme': 'Bearer',
-            'in': 'header',
-        },
-    },
-    'USE_SESSION_AUTH': False,  # If using token-based authentication
-}
-
+REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
