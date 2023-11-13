@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.generics import DestroyAPIView
 from .models import Course, Tag, Prerequisite, Learning, UserCourse, Video, Category
+
 from .serializers import (
     CourseSerializer,
     CategorySerializer,
@@ -22,7 +23,7 @@ class CreateCategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     permission_classes = [IsAdminUser]
 
-
+@login_required
 class CategoryListAPIView(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
