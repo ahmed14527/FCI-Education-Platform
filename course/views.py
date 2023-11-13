@@ -28,22 +28,22 @@ class CategoryListAPIView(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     
-class CategoryUpdateAPIView(APIView):
-    def put(self, request, pk):
-        category = Category.objects.get(pk=pk)
-        serializer = CategorySerializer(category, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
+#class CategoryUpdateAPIView(APIView):
+   # def put(self, request, pk):
+      #  category = Category.objects.get(pk=pk)
+      #  serializer = CategorySerializer(category, data=request.data)
+      #  if serializer.is_valid():
+      #      serializer.save()
+       #     return Response(serializer.data)
+      #  return Response(serializer.errors, status=400)
     
-    permission_classes = [IsAdminUser]
+    #permission_classes = [IsAdminUser]
 
 
-class CategoryDeleteAPIView(DestroyAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-    permission_classes = [IsAdminUser]
+#class CategoryDeleteAPIView(DestroyAPIView):
+  #  queryset = Category.objects.all()
+  #  serializer_class = CategorySerializer
+   # permission_classes = [IsAdminUser]
 
     
     
@@ -58,15 +58,15 @@ class CreateCourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     permission_classes = [IsAdminUser]
 
-class CourseUpdateAPIView(APIView):
-    def put(self, request, pk):
-        course = Course.objects.get(pk=pk)
-        serializer = CourseSerializer(course, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
-    permission_classes = [IsAdminUser]
+##lass CourseUpdateAPIView(APIView):
+   # def put(self, request, pk):
+      #  course = Course.objects.get(pk=pk)
+       # serializer = CourseSerializer(course, data=request.data)
+       # if serializer.is_valid():
+        #    serializer.save()
+         #   return Response(serializer.data)
+        #return Response(serializer.errors, status=400)
+    #permission_classes = [IsAdminUser]
 
 class CourseDeleteAPIView(DestroyAPIView):
     queryset = Course.objects.all()
@@ -83,20 +83,20 @@ class CreateTagViewSet(viewsets.ModelViewSet):
     serializer_class = TagSerializer
     permission_classes = [IsAdminUser]
     
-class TagUpdateAPIView(APIView):
-    def put(self, request, pk):
-        tag = Tag.objects.get(pk=pk)
-        serializer = TagSerializer(tag, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
-    permission_classes = [IsAdminUser]
+#class TagUpdateAPIView(APIView):
+   # def put(self, request, pk):
+        #tag = Tag.objects.get(pk=pk)
+       # serializer = TagSerializer(tag, data=request.data)
+       # if serializer.is_valid():
+        #    serializer.save()
+        #    return Response(serializer.data)
+        #return Response(serializer.errors, status=400)
+    #permission_classes = [IsAdminUser]
 
-class TagDeleteAPIView(DestroyAPIView):
-    queryset = Tag.objects.all()
-    serializer_class = TagSerializer
-    permission_classes = [IsAdminUser]
+#class TagDeleteAPIView(DestroyAPIView):
+   # queryset = Tag.objects.all()
+   # serializer_class = TagSerializer
+   # permission_classes = [IsAdminUser]
 
 @method_decorator(login_required, name='dispatch')
 class PrerequisiteListAPIView(generics.ListAPIView):
@@ -108,20 +108,20 @@ class CreatePrerequisiteViewSet(viewsets.ModelViewSet):
     serializer_class = PrerequisiteSerializer
     permission_classes = [IsAdminUser]
     
-class PrerequisiteUpdateAPIView(APIView):
-    def put(self, request, pk):
-        prerequisite = Prerequisite.objects.get(pk=pk)
-        serializer = PrerequisiteSerializer(prerequisite, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
-    permission_classes = [IsAdminUser]
+#class PrerequisiteUpdateAPIView(APIView):
+ #   def put(self, request, pk):
+    #    prerequisite = Prerequisite.objects.get(pk=pk)
+     #   serializer = PrerequisiteSerializer(prerequisite, data=request.data)
+     #   if serializer.is_valid():
+     #       serializer.save()
+     #       return Response(serializer.data)
+     #   return Response(serializer.errors, status=400)
+   # permission_classes = [IsAdminUser]
 
-class PrerequisiteDeleteAPIView(DestroyAPIView):
-    queryset = Prerequisite.objects.all()
-    serializer_class = PrerequisiteSerializer
-    permission_classes = [IsAdminUser]
+#class PrerequisiteDeleteAPIView(DestroyAPIView):
+   # queryset = Prerequisite.objects.all()
+   # serializer_class = PrerequisiteSerializer
+   # permission_classes = [IsAdminUser]
 
 
 @method_decorator(login_required, name='dispatch')
@@ -134,20 +134,20 @@ class CreateLearningViewSet(viewsets.ModelViewSet):
     serializer_class = LearningSerializer
     permission_classes = [IsAdminUser]
 
-class LearningUpdateAPIView(APIView):
-    def put(self, request, pk):
-        learning = Learning.objects.get(pk=pk)
-        serializer = Learning(learning, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
-    permission_classes = [IsAdminUser]
+#class LearningUpdateAPIView(APIView):
+ #   def put(self, request, pk):
+  #      learning = Learning.objects.get(pk=pk)
+   #     serializer = Learning(learning, data=request.data)
+    #    if serializer.is_valid():
+     #       serializer.save()
+      #      return Response(serializer.data)
+       # return Response(serializer.errors, status=400)
+    #permission_classes = [IsAdminUser]
 
-class LearningDeleteAPIView(DestroyAPIView):
-    queryset = Learning.objects.all()
-    serializer_class = LearningSerializer
-    permission_classes = [IsAdminUser]
+#class LearningDeleteAPIView(DestroyAPIView):
+ #   queryset = Learning.objects.all()
+  #  serializer_class = LearningSerializer
+   # permission_classes = [IsAdminUser]
 
 @method_decorator(login_required, name='dispatch')
 class UserCourseListAPIView(generics.ListAPIView):
@@ -162,21 +162,21 @@ class CreateUserCourseViewSet(viewsets.ModelViewSet):
     
     
 
-@method_decorator(login_required, name='dispatch')
-class UserCourseUpdateAPIView(APIView):
-    def put(self, request, pk):
-        userCourse = UserCourse.objects.get(pk=pk)
-        serializer = UserCourse(userCourse, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
+#@method_decorator(login_required, name='dispatch')
+#class UserCourseUpdateAPIView(APIView):
+   # def put(self, request, pk):
+       # userCourse = UserCourse.objects.get(pk=pk)
+       # serializer = UserCourse(userCourse, data=request.data)
+        #if serializer.is_valid():
+        #    serializer.save()
+        #    return Response(serializer.data)
+     #   return Response(serializer.errors, status=400)
     
     
-@method_decorator(login_required, name='dispatch')
-class UserCourseDeleteAPIView(DestroyAPIView):
-    queryset = UserCourse.objects.all()
-    serializer_class = UserCourseSerializer
+#@method_decorator(login_required, name='dispatch')
+#class UserCourseDeleteAPIView(DestroyAPIView):
+    #queryset = UserCourse.objects.all()
+   # serializer_class = UserCourseSerializer
 
 
 @method_decorator(login_required, name='dispatch')
@@ -190,20 +190,20 @@ class CreateVideoViewSet(viewsets.ModelViewSet):
     serializer_class = VideoSerializer
     permission_classes = [IsAdminUser]
     
-class VideoUpdateAPIView(APIView):
-    def put(self, request, pk):
-        video = Video.objects.get(pk=pk)
-        serializer = Video(video, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
-    permission_classes = [IsAdminUser]
+#class VideoUpdateAPIView(APIView):
+  #  def put(self, request, pk):
+     #   video = Video.objects.get(pk=pk)
+      #  serializer = Video(video, data=request.data)
+      #  if serializer.is_valid():
+        #    serializer.save()
+       #     return Response(serializer.data)
+      #  return Response(serializer.errors, status=400)
+    #permission_classes = [IsAdminUser]
 
-class VideoDeleteAPIView(DestroyAPIView):
-    queryset = Video.objects.all()
-    serializer_class = VideoSerializer
-    permission_classes = [IsAdminUser]
+#class VideoDeleteAPIView(DestroyAPIView):
+   # queryset = Video.objects.all()
+   # serializer_class = VideoSerializer
+   # permission_classes = [IsAdminUser]
 
     
 from django.contrib.auth.decorators import login_required
