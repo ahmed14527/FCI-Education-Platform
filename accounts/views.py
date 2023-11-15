@@ -112,3 +112,26 @@ class UserListView(generics.ListAPIView):
     )
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
+    
+    
+    
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+
+from drf_yasg.utils import swagger_auto_schema
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+@swagger_auto_schema(method='GET', operation_summary='User Profile', responses={200: 'OK'})
+@api_view(['GET'])
+def user_profile(request):
+    """
+    Retrieve the user profile.
+    """
+    user = request.user
+    data = {
+        'id': user.id,
+        'username': user.username,
+    }
+    return Response(data)
+    

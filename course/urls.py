@@ -15,7 +15,6 @@ from .views import (
     CreateUserCourseViewSet,
     VideoListAPIView,
     CreateVideoViewSet,
-    user_profile,
 )
 
 router = routers.DefaultRouter()
@@ -35,7 +34,6 @@ urlpatterns = [
     path('learning/', LearningListAPIView.as_view(), name='learning-list'),
     path('user-course/', UserCourseListAPIView.as_view(), name='user-course-list'),
     path('video/', VideoListAPIView.as_view(), name='video-list'),
-    path('user-profile/', user_profile, name='user-profile'),
 ]
 
 urlpatterns += router.urls

@@ -102,35 +102,3 @@ class CreateVideoViewSet(viewsets.ModelViewSet):
 
 
     
-from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
-from .models import Course
-
-def user_profile(request):
-    user = request.user
-    #courses = Course.objects.filter(usercourse__user=user)
-
-    #course_list = []
-    #for course in courses:
-     #   course_data = {
-      #      'id': course.id,
-       ##     'name': course.name,
-         #   'description': course.description,
-          #  'discount': course.discount,
-           # 'active': course.active,
-            #'thumbnail': course.thumbnail.url,
-      #      #'date': course.date,
-       #     'resource': course.resource.url,
-        #    'length': course.length,
-            # Add more fields as needed
-        #}
-        #course_list.append(course_data)
-
-    data = {
-        'id': user.id,
-        'username': user.username,
-        #'courses': course_list,
-    }
-    return JsonResponse(data)
-    
-    
