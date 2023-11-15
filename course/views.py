@@ -7,6 +7,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.generics import DestroyAPIView
 from .models import Course, Tag, Prerequisite, Learning, UserCourse, Video, Category
+from rest_framework.permissions import AllowAny
+
 
 from .serializers import (
     CourseSerializer,
@@ -21,42 +23,46 @@ from .serializers import (
 class CreateCategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [AllowAny]
 
 class CategoryListAPIView(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    
+    permission_classes = [AllowAny]
+
 class CourseListAPIView(generics.ListAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    permission_classes = [AllowAny]
 
 
 class CreateCourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [AllowAny]
 
 
 
 class TagListAPIView(generics.ListAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
+    permission_classes = [AllowAny]
 
 class CreateTagViewSet(viewsets.ModelViewSet):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [AllowAny]
     
 
 class PrerequisiteListAPIView(generics.ListAPIView):
     queryset = Prerequisite.objects.all()
     serializer_class = PrerequisiteSerializer
+    permission_classes = [AllowAny]
 
 class CreatePrerequisiteViewSet(viewsets.ModelViewSet):
     queryset = Prerequisite.objects.all()
     serializer_class = PrerequisiteSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [AllowAny]
     
 
 
