@@ -28,13 +28,13 @@ router.register(r'user-courses', CreateUserCourseViewSet)
 router.register(r'videos', CreateVideoViewSet)
 
 urlpatterns = [
-    path('categories/', CategoryListAPIView.as_view(), name='category-list'),
-    path('courses/', CourseListAPIView.as_view(), name='course-list'),
-    path('tags/', TagListAPIView.as_view(), name='tag-list'),
-    path('prerequisites/', PrerequisiteListAPIView.as_view(), name='prerequisite-list'),
-    path('learnings/', LearningListAPIView.as_view(), name='learning-list'),
-    path('user-courses/', UserCourseListAPIView.as_view(), name='user-course-list'),
-    path('videos/', VideoListAPIView.as_view(), name='video-list'),
+    path('category/', CategoryListAPIView.as_view(), name='category-list'),
+    path('course/', CourseListAPIView.as_view(), name='course-list'),
+    path('tag/', TagListAPIView.as_view(), name='tag-list'),
+    path('prerequisite/', PrerequisiteListAPIView.as_view(), name='prerequisite-list'),
+    path('learning/', LearningListAPIView.as_view(), name='learning-list'),
+    path('user-course/', UserCourseListAPIView.as_view(), name='user-course-list'),
+    path('video/', VideoListAPIView.as_view(), name='video-list'),
     path('user-profile/', user_profile, name='user-profile'),
 ]
 
