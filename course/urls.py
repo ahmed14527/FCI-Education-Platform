@@ -19,13 +19,13 @@ from .views import (
 )
 
 router = routers.DefaultRouter()
-router.register(r'categories', CreateCategoryViewSet)
-router.register(r'courses', CreateCourseViewSet)
-router.register(r'tags', CreateTagViewSet)
-router.register(r'prerequisites', CreatePrerequisiteViewSet)
-router.register(r'learnings', CreateLearningViewSet)
-router.register(r'user-courses', CreateUserCourseViewSet)
-router.register(r'videos', CreateVideoViewSet)
+router.register(r'Create-categories', CreateCategoryViewSet)
+router.register(r'Create-courses', CreateCourseViewSet)
+router.register(r'Create-tags', CreateTagViewSet)
+router.register(r'Create-prerequisites', CreatePrerequisiteViewSet)
+router.register(r'Create-learnings', CreateLearningViewSet)
+router.register(r'Create-user-courses', CreateUserCourseViewSet)
+router.register(r'Create-videos', CreateVideoViewSet)
 
 urlpatterns = [
     path('category/', CategoryListAPIView.as_view(), name='category-list'),
