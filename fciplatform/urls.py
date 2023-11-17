@@ -26,11 +26,11 @@ from accounts.views import user_profile
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Your API",
+        title="FCI-Platform",
         default_version="v1",
-        description="API for your project",
+        description="API for FCI-Platform",
         terms_of_service="https://your-terms-of-service-url.com/",
-        contact=openapi.Contact(email="your-email@example.com"),
+        contact=openapi.Contact(email="ahmed890magdy@gmail.com"),
         license=openapi.License(name="MIT License"),
     ),
     public=True,
