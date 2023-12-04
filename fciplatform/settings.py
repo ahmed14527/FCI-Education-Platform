@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'sheets',
     'communications',
     'drf_yasg',
+    'corsheaders',
+
 
 
 
@@ -60,6 +62,33 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
+]
+
+
+
+CORS_ORIGIN_ALLOW_ALL = True  # Allow requests from any origin
+# or specify specific origins
+# CORS_ORIGIN_WHITELIST = [
+#     'http://example.com',
+#     'https://example.com',
+# ]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
+CORS_ALLOW_HEADERS = [
+    'Accept',
+    'Accept-Language',
+    'Content-Type',
+    'Authorization',
 ]
 
 ROOT_URLCONF = 'fciplatform.urls'
