@@ -39,7 +39,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
     path('', include('course.urls')),
-    path('', include('Assignment.urls')),
+    path('', include('Queiz.urls')),
     path('', include('sheets.urls')),
     path('users/', UserListView.as_view(), name='user-list'),
     path('api-profile/', user_profile, name='user-profile'),

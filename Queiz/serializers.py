@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import  MCQAssignment, MCQQuestion, Option, MCQSubmission, MCQAnswer
+from .models import  MCQAssignment, MCQQuestion, Option, MCQSubmission, MCQAnswer,CorrectAnswer
 
 
 
@@ -26,4 +26,11 @@ class MCQSubmissionSerializer(serializers.ModelSerializer):
 class MCQAnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = MCQAnswer
+        fields = '__all__'
+        
+class CorrectAnswerSerializer(serializers.ModelSerializer):
+    question = MCQQuestionSerializer()
+
+    class Meta:
+        model = CorrectAnswer
         fields = '__all__'

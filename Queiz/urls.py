@@ -12,7 +12,7 @@ from .views import (
     MCQAnswerViewSet,
     MCQAnswerListAPIView,
 )
-
+from .views import CorrectAnswerListCreateView, CorrectAnswerRetrieveUpdateDestroyView
 router = routers.DefaultRouter()
 router.register('create-mcq-assignments', MCQAssignmentViewSet)
 router.register('create-mcq-questions', MCQQuestionViewSet)
@@ -26,6 +26,8 @@ urlpatterns = [
     path('options/', OptionListAPIView.as_view(), name='option-list'),
     path('mcq-submissions/', MCQSubmissionListAPIView.as_view(), name='mcq-submission-list'),
     path('mcq-answers/', MCQAnswerListAPIView.as_view(), name='mcq-answer-list'),
+    path('correct-answers/', CorrectAnswerListCreateView.as_view(), name='correct-answer-list'),
+    path('correct-answers/<int:pk>/', CorrectAnswerRetrieveUpdateDestroyView.as_view(), name='correct-answer-detail'),    
 ]
 
 urlpatterns += router.urls

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AssignmentConfig(AppConfig):
+class QueizConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Assignment'
+    name = 'Queiz'

@@ -62,3 +62,22 @@ class MCQAnswerListAPIView(generics.ListAPIView):
     queryset = MCQAnswer.objects.all()
     serializer_class = MCQAnswerSerializer
     permission_classes = [AllowAny]
+
+
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .models import MCQAssignment, CorrectAnswer
+from .serializers import CorrectAnswerSerializer
+
+from rest_framework import generics
+from .models import CorrectAnswer
+from .serializers import CorrectAnswerSerializer
+
+class CorrectAnswerListCreateView(generics.ListCreateAPIView):
+    queryset = CorrectAnswer.objects.all()
+    serializer_class = CorrectAnswerSerializer
+
+class CorrectAnswerRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = CorrectAnswer.objects.all()
+    serializer_class = CorrectAnswerSerializer

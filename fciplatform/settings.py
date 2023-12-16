@@ -43,11 +43,11 @@ INSTALLED_APPS = [
     'accounts',
     'rest_framework',
     'knox',
-    'Assignment',
     'sheets',
     'communications',
     'drf_yasg',
     'corsheaders',
+    'Queiz',
 
 
 

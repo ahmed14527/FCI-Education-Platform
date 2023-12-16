@@ -37,5 +37,13 @@ class MCQAnswer(models.Model):
         return f"MCQAnswer - Selected Option: {self.selected_option}"
     
     
+class CorrectAnswer(models.Model):
+    question = models.OneToOneField(MCQQuestion, on_delete=models.CASCADE, related_name='correct_answer')
+    option = models.ForeignKey(Option, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"CorrectAnswer - Question: {self.question}"
+    
+    
     
     
