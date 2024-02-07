@@ -20,18 +20,18 @@ from .views import (
 router = routers.DefaultRouter()
 router.register(r'Create-categories', CreateCategoryViewSet)
 router.register(r'Create-courses', CreateCourseViewSet)
-router.register(r'Create-tags', CreateTagViewSet)
-router.register(r'Create-prerequisites', CreatePrerequisiteViewSet)
-router.register(r'Create-learnings', CreateLearningViewSet)
+#router.register(r'Create-tags', CreateTagViewSet)
+#router.register(r'Create-prerequisites', CreatePrerequisiteViewSet)
+#router.register(r'Create-learnings', CreateLearningViewSet)
 router.register(r'Create-user-courses', CreateUserCourseViewSet)
 router.register(r'Create-videos', CreateVideoViewSet)
 
 urlpatterns = [
     path('category/', CategoryListAPIView.as_view(), name='category-list'),
     path('course/', CourseListAPIView.as_view(), name='course-list'),
-    path('tag/', TagListAPIView.as_view(), name='tag-list'),
-    path('prerequisite/', PrerequisiteListAPIView.as_view(), name='prerequisite-list'),
-    path('learning/', LearningListAPIView.as_view(), name='learning-list'),
+    #path('tag/', TagListAPIView.as_view(), name='tag-list'),
+    #path('prerequisite/', PrerequisiteListAPIView.as_view(), name='prerequisite-list'),
+    #path('learning/', LearningListAPIView.as_view(), name='learning-list'),
     path('user-course/', UserCourseListAPIView.as_view(), name='user-course-list'),
     path('video/', VideoListAPIView.as_view(), name='video-list'),
 ]
