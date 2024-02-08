@@ -97,7 +97,6 @@ class VideoListAPIView(generics.ListAPIView):
 class CreateVideoViewSet(viewsets.ModelViewSet):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
-    permission_classes = [IsAdminUser]
     
 
 
