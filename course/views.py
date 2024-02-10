@@ -8,14 +8,12 @@ from rest_framework.views import APIView
 from rest_framework.generics import DestroyAPIView
 from .models import Course, Tag, Prerequisite, Learning, UserCourse, Video, Category
 from rest_framework.permissions import AllowAny
-
-
+from django.views.generic import DetailView
+from .models import Course
+from .serializers import CourseSerializer, CourseDetailSerializer,CategoryDetailSerializer,VideoDetailSerializer,UserCourseDetailSerializer
 from .serializers import (
     CourseSerializer,
     CategorySerializer,
-    TagSerializer,
-    PrerequisiteSerializer,
-    LearningSerializer,
     UserCourseSerializer,
     VideoSerializer,
 )
@@ -29,6 +27,11 @@ class CategoryListAPIView(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [AllowAny]
+    
+class CategoryDetailAPIView(generics.RetrieveAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategoryDetailSerializer
+    lookup_field = 'pk'
 
 class CourseListAPIView(generics.ListAPIView):
     queryset = Course.objects.all()
@@ -43,38 +46,10 @@ class CreateCourseViewSet(viewsets.ModelViewSet):
 
 
 
-class TagListAPIView(generics.ListAPIView):
-    queryset = Tag.objects.all()
-    serializer_class = TagSerializer
-    permission_classes = [AllowAny]
-
-class CreateTagViewSet(viewsets.ModelViewSet):
-    queryset = Tag.objects.all()
-    serializer_class = TagSerializer
-    permission_classes = [AllowAny]
-    
-
-class PrerequisiteListAPIView(generics.ListAPIView):
-    queryset = Prerequisite.objects.all()
-    serializer_class = PrerequisiteSerializer
-    permission_classes = [AllowAny]
-
-class CreatePrerequisiteViewSet(viewsets.ModelViewSet):
-    queryset = Prerequisite.objects.all()
-    serializer_class = PrerequisiteSerializer
-    permission_classes = [AllowAny]
-    
-
-
-class LearningListAPIView(generics.ListAPIView):
-    queryset = Learning.objects.all()
-    serializer_class = LearningSerializer
-
-class CreateLearningViewSet(viewsets.ModelViewSet):
-    queryset = Learning.objects.all()
-    serializer_class = LearningSerializer
-    permission_classes = [IsAdminUser]
-
+class CourseDetailAPIView(generics.RetrieveAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseDetailSerializer
+    lookup_field = 'pk'
 
 
 class UserCourseListAPIView(generics.ListAPIView):
@@ -86,6 +61,11 @@ class CreateUserCourseViewSet(viewsets.ModelViewSet):
     queryset = UserCourse.objects.all()
     serializer_class = UserCourseSerializer
     
+    
+class UserCourseDetailAPIView(generics.RetrieveAPIView):
+    queryset = UserCourse.objects.all()
+    serializer_class = UserCourseDetailSerializer
+    lookup_field = 'pk'
     
 
 
@@ -99,5 +79,8 @@ class CreateVideoViewSet(viewsets.ModelViewSet):
     serializer_class = VideoSerializer
     
 
-
+class VideoDetailAPIView(generics.RetrieveAPIView):
+    queryset = Video.objects.all()
+    serializer_class = VideoDetailSerializer
+    lookup_field = 'pk'
     
