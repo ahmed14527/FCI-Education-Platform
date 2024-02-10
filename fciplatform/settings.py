@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'knox',
     'sheets',
     'communications',
-    'drf_yasg',
     'corsheaders',
     'Queiz',
+    'drf_yasg',
+    "drf_spectacular",
+
 
 
 
@@ -171,9 +173,12 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [ 
         # ... auth classes here ... 
     ]
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }

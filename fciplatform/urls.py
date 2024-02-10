@@ -25,17 +25,13 @@ from drf_yasg import openapi
 from accounts.views import user_profile
 from django.conf import settings
 from django.conf.urls.static import static
-schema_view = get_schema_view(
-    openapi.Info(
-        title="FCI-Platform",
-        default_version="v1",
-        description="API for FCI-Platform",
-        terms_of_service="https://your-terms-of-service-url.com/",
-        contact=openapi.Contact(email="ahmed890magdy@gmail.com"),
-        license=openapi.License(name="MIT License"),
-    ),
-    public=True,
+from django.urls import path
+from rest_framework import permissions
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularSwaggerView,
 )
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
@@ -45,12 +41,12 @@ urlpatterns = [
     path('users/', UserListView.as_view(), name='user-list'),
     path('api-profile/', user_profile, name='user-profile'),
     path('', include('communications.urls')),
-    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-
-
-
+    path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
+    path(
+        'api/docs/',
+        SpectacularSwaggerView.as_view(url_name='api-schema'),
+        name='api-docs',
+    )
 
 
 

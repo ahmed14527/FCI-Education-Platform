@@ -21,7 +21,7 @@ from .serializers import (
 class CreateCategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAdminUser]
 
 class CategoryListAPIView(generics.ListAPIView):
     queryset = Category.objects.all()
@@ -42,7 +42,6 @@ class CourseListAPIView(generics.ListAPIView):
 class CreateCourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
-    permission_classes = [AllowAny]
 
 
 
@@ -77,7 +76,7 @@ class VideoListAPIView(generics.ListAPIView):
 class CreateVideoViewSet(viewsets.ModelViewSet):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
-    
+
 
 class VideoDetailAPIView(generics.RetrieveAPIView):
     queryset = Video.objects.all()
