@@ -42,6 +42,7 @@ class CourseListAPIView(generics.ListAPIView):
 class CreateCourseViewSet(viewsets.ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    permission_classes = [IsAdminUser]
 
 
 
@@ -59,7 +60,8 @@ class UserCourseListAPIView(generics.ListAPIView):
 class CreateUserCourseViewSet(viewsets.ModelViewSet):
     queryset = UserCourse.objects.all()
     serializer_class = UserCourseSerializer
-    
+    permission_classes = [IsAdminUser]
+
     
 class UserCourseDetailAPIView(generics.RetrieveAPIView):
     queryset = UserCourse.objects.all()
@@ -76,6 +78,7 @@ class VideoListAPIView(generics.ListAPIView):
 class CreateVideoViewSet(viewsets.ModelViewSet):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
+    permission_classes = [IsAdminUser]
 
 
 class VideoDetailAPIView(generics.RetrieveAPIView):

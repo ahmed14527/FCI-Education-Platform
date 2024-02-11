@@ -13,10 +13,10 @@ from .views import (
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'Create-categories', CreateCategoryViewSet)
-router.register(r'Create-courses', CreateCourseViewSet)
-router.register(r'Create-user-courses', CreateUserCourseViewSet)
-router.register(r'Create-videos', CreateVideoViewSet)
+router.register(r'categories', CreateCategoryViewSet)
+router.register(r'courses', CreateCourseViewSet)
+router.register(r'courses', CreateUserCourseViewSet)
+router.register(r'videos', CreateVideoViewSet)
 
 urlpatterns = [
     path('category/', CategoryListAPIView.as_view(), name='category-list'),

@@ -7,11 +7,11 @@ from .models import Comment
 from .serializers import CommentSerializer
 from rest_framework.permissions import IsAdminUser
 from rest_framework.permissions import AllowAny
+from rest_framework import viewsets
 
-class CommentCreateView(generics.CreateAPIView):
+class CreateCommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    permission_classes = [AllowAny]
 
     
 class CommentListAPIView(generics.ListAPIView):
