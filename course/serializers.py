@@ -12,14 +12,9 @@ class CategoryDetailSerializer(serializers.ModelSerializer):
     fields = '__all__'
             
 class CourseSerializer(serializers.ModelSerializer):
-    thumbnail = serializers.SerializerMethodField()
-
-    def get_thumbnail(self, obj):
-        return obj.thumbnail.url
-
     class Meta:
         model = Course
-        fields = ('category', 'name', 'description', 'discount', 'active', 'thumbnail', 'date', 'resource', 'length')
+        fields = '__all__'
 
 
 class CourseDetailSerializer(serializers.ModelSerializer):
@@ -40,14 +35,9 @@ class UserCourseDetailSerializer(serializers.ModelSerializer):
     fields = '__all__'
  
 class VideoSerializer(serializers.ModelSerializer):
-    video_file = serializers.SerializerMethodField()
-
-    def get_video_file(self, obj):
-        return obj.video_file.url
-
     class Meta:
         model = Video
-        fields = ('title', 'serial_number', 'course', 'video_id', 'video_file', 'is_preview')
+        fields = '__all__'
         
         
 class VideoDetailSerializer(serializers.ModelSerializer):
