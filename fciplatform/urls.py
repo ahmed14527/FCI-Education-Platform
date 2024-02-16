@@ -31,7 +31,20 @@ from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularSwaggerView,
 )
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
+schema_view = get_schema_view(
+    openapi.Info(
+        title="FCI-PLATFORM",
+        default_version="v1",
+        description="API for FCI PLATFORM",
+        terms_of_service="",
+        contact=openapi.Contact(email="ahmed890magdy@gmail.com"),
+        license=openapi.License(name="MIT License"),
+    ),
+    public=True,
+)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
@@ -41,12 +54,9 @@ urlpatterns = [
     path('users/', UserListView.as_view(), name='user-list'),
     path('api-profile/', user_profile, name='user-profile'),
     path('', include('communications.urls')),
-    path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
-    path(
-        'api/docs/',
-        SpectacularSwaggerView.as_view(url_name='api-schema'),
-        name='api-docs',
-    )
+    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
 
 
