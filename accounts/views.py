@@ -121,17 +121,22 @@ from django.http import JsonResponse
 from drf_yasg.utils import swagger_auto_schema
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.contrib.auth.models import User
 
 @swagger_auto_schema(method='GET', operation_summary='User Profile', responses={200: 'OK'})
 @api_view(['GET'])
+
 def user_profile(request):
     """
-    Retrieve the user profile.
+    Retrieve the user profile including password, user_name, and superuser status.
     """
     user = request.user
     data = {
         'id': user.id,
         'username': user.username,
+        'is_superuser': user.is_superuser,  # Include the superuser status
     }
     return Response(data)
-    
+
+
+
