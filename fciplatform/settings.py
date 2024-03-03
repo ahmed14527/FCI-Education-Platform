@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'knox',
     'sheets',
+    'rest_framework.authtoken',
     'communications',
     'corsheaders',
     'Queiz',

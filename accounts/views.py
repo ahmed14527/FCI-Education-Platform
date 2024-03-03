@@ -10,7 +10,7 @@ from knox.views import LoginView as KnoxLoginView
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
-
+from rest_framework.authtoken.models import Token
 
 class RegisterAPI(generics.GenericAPIView):
     serializer_class = RegisterSerializer
@@ -33,6 +33,7 @@ class RegisterAPI(generics.GenericAPIView):
                             },
                         ),
                         'token': openapi.Schema(type=openapi.TYPE_STRING),
+                        
                     },
                 ),
             ),
@@ -45,9 +46,28 @@ class RegisterAPI(generics.GenericAPIView):
         user = serializer.save()
         return Response({
             "user": UserSerializer(user, context=self.get_serializer_context()).data,
-            "token": AuthToken.objects.create(user)[1]
+            "token": AuthToken.objects.create(user)[1],
+
         })
 
+
+#class LoginAPI(KnoxLoginView):
+    #permission_classes = (permissions.AllowAny,)
+
+   # @swagger_auto_schema(
+       # request_body=AuthTokenSerializer,
+        #operation_description="User login API",
+       # responses={
+      #      200: 'OK',
+     #       400: 'Bad Request',
+    #    },
+    #)
+    #def post(self, request, format=None):
+        #serializer = AuthTokenSerializer(data=request.data)
+       # serializer.is_valid(raise_exception=True)
+       # user = serializer.validated_data['user']
+       # login(request, user)
+       # return super(LoginAPI, self).post(request, format=None)
 
 class LoginAPI(KnoxLoginView):
     permission_classes = (permissions.AllowAny,)
@@ -65,9 +85,23 @@ class LoginAPI(KnoxLoginView):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
         login(request, user)
-        return super(LoginAPI, self).post(request, format=None)
 
+        # Generate or retrieve the token for the user
+        token, _ = Token.objects.get_or_create(user=user)
 
+        # Check if the user is a superuser
+        is_superuser = user.is_superuser
+
+        # Return the token and superuser status in the response
+        return Response({
+            'token': token.key,
+            'username': user.username,
+            'user_id': user.id,
+            'is_superuser': is_superuser
+        }, status=status.HTTP_200_OK)
+        
+        
+        
 class LogoutView(APIView):
     @swagger_auto_schema(
         operation_description="User logout API",
