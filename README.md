@@ -28,7 +28,6 @@ Note: this guide is not for absolute beginners so im assuming that you have the 
   * [server](#server)
   * [views](#views)
   * [urls](#urls)
-  * [static_files](#static_files)
   
 <hr>
 
@@ -258,88 +257,248 @@ if yes, we didn't make any mistakes. Good !
 Now lets see our books on our webpage but before that we need to work on views. In this case im gonna use 'Class Based Views' which makes our code as much DRY (Don't Repeat Yourself) as possible and faster to implement. Put the follwing code in your views.py file.
 
 
-from rest_framework import viewsets
-from rest_framework.permissions import IsAdminUser
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
-from rest_framework import generics
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.generics import DestroyAPIView
-from .models import Course, Tag, Prerequisite, Learning, UserCourse, Video, Category
-from rest_framework.permissions import AllowAny
-from django.views.generic import DetailView
-from .models import Course
-from .serializers import CourseSerializer, CourseDetailSerializer,CategoryDetailSerializer,VideoDetailSerializer,UserCourseDetailSerializer
-from .serializers import (
-    CourseSerializer,
-    CategorySerializer,
-    UserCourseSerializer,
-    VideoSerializer,
-)
+	from rest_framework import viewsets
+	from rest_framework.permissions import IsAdminUser
+	from django.utils.decorators import method_decorator
+	from django.contrib.auth.decorators import login_required
+	from rest_framework import generics
+	from rest_framework.response import Response
+	from rest_framework.views import APIView
+	from rest_framework.generics import DestroyAPIView
+	from .models import Course, Tag, Prerequisite, Learning, UserCourse, Video, Category
+	from rest_framework.permissions import AllowAny
+	from django.views.generic import DetailView
+	from .models import Course
+	from .serializers import CourseSerializer, CourseDetailSerializer,CategoryDetailSerializer,VideoDetailSerializer,UserCourseDetailSerializer
+	from .serializers import (
+    	CourseSerializer,
+    	CategorySerializer,
+    	UserCourseSerializer,
+    	VideoSerializer,
+	)
 
-class CreateCategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+	class CreateCategoryViewSet(viewsets.ModelViewSet):
+    	queryset = Category.objects.all()
+    	serializer_class = CategorySerializer
 
-class CategoryListAPIView(generics.ListAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-    permission_classes = [AllowAny]
+	class CategoryListAPIView(generics.ListAPIView):
+    	queryset = Category.objects.all()
+    	serializer_class = CategorySerializer
+    	permission_classes = [AllowAny]
     
-class CategoryDetailAPIView(generics.RetrieveAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategoryDetailSerializer
-    lookup_field = 'pk'
+	class CategoryDetailAPIView(generics.RetrieveAPIView):
+    	queryset = Category.objects.all()
+    	serializer_class = CategoryDetailSerializer
+    	lookup_field = 'pk'
 
-class CourseListAPIView(generics.ListAPIView):
-    queryset = Course.objects.all()
-    serializer_class = CourseSerializer
-    permission_classes = [AllowAny]
-
-
-class CreateCourseViewSet(viewsets.ModelViewSet):
-    queryset = Course.objects.all()
-    serializer_class = CourseSerializer
+	class CourseListAPIView(generics.ListAPIView):
+    	queryset = Course.objects.all()
+    	serializer_class = CourseSerializer
+    	permission_classes = [AllowAny]
 
 
-
-class CourseDetailAPIView(generics.RetrieveAPIView):
-    queryset = Course.objects.all()
-    serializer_class = CourseDetailSerializer
-    lookup_field = 'pk'
+	class CreateCourseViewSet(viewsets.ModelViewSet):
+    	queryset = Course.objects.all()
+    	serializer_class = CourseSerializer
 
 
-class UserCourseListAPIView(generics.ListAPIView):
-    queryset = UserCourse.objects.all()
-    serializer_class = UserCourseSerializer
+
+	class CourseDetailAPIView(generics.RetrieveAPIView):
+    	queryset = Course.objects.all()
+    	serializer_class = CourseDetailSerializer
+    	lookup_field = 'pk'
 
 
-class CreateUserCourseViewSet(viewsets.ModelViewSet):
-    queryset = UserCourse.objects.all()
-    serializer_class = UserCourseSerializer
+	class UserCourseListAPIView(generics.ListAPIView):
+    	queryset = UserCourse.objects.all()
+    	serializer_class = UserCourseSerializer
+
+
+	class CreateUserCourseViewSet(viewsets.ModelViewSet):
+    	queryset = UserCourse.objects.all()
+    	serializer_class = UserCourseSerializer
 
     
-class UserCourseDetailAPIView(generics.RetrieveAPIView):
-    queryset = UserCourse.objects.all()
-    serializer_class = UserCourseDetailSerializer
-    lookup_field = 'pk'
+	class UserCourseDetailAPIView(generics.RetrieveAPIView):
+    	queryset = UserCourse.objects.all()
+    	serializer_class = UserCourseDetailSerializer
+    	lookup_field = 'pk'
     
 
 
-class VideoListAPIView(generics.ListAPIView):
-    queryset = Video.objects.all()
-    serializer_class = VideoSerializer
+	class VideoListAPIView(generics.ListAPIView):
+    	queryset = Video.objects.all()
+    	serializer_class = VideoSerializer
 
 
-class CreateVideoViewSet(viewsets.ModelViewSet):
-    queryset = Video.objects.all()
-    serializer_class = VideoSerializer
+	class CreateVideoViewSet(viewsets.ModelViewSet):
+    	queryset = Video.objects.all()
+    	serializer_class = VideoSerializer
 
 
-class VideoDetailAPIView(generics.RetrieveAPIView):
-    queryset = Video.objects.all()
-    serializer_class = VideoDetailSerializer
-    lookup_field = 'pk'
+	class VideoDetailAPIView(generics.RetrieveAPIView):
+    	queryset = Video.objects.all()
+    	serializer_class = VideoDetailSerializer
+    	lookup_field = 'pk'
     
+
+
+
+
+* what we done here ? 
+1. Importing necessary modules and classes:
+   - The code begins by importing various modules and classes required for the views.
+
+2. Category-related Views:
+   - `CreateCategoryViewSet`: This view set allows creating, retrieving, updating, and deleting Category objects.
+   - `CategoryListAPIView`: This read-only view lists all Category objects.
+   - `CategoryDetailAPIView`: This read-only view retrieves a specific Category object by its primary key.
+
+3. Course-related Views:
+   - `CourseListAPIView`: This read-only view lists all Course objects.
+   - `CreateCourseViewSet`: This view set allows creating, retrieving, updating, and deleting Course objects.
+   - `CourseDetailAPIView`: This read-only view retrieves a specific Course object by its primary key.
+
+4. UserCourse-related Views:
+   - `UserCourseListAPIView`: This read-only view lists all UserCourse objects.
+   - `CreateUserCourseViewSet`: This view set allows creating, retrieving, updating, and deleting UserCourse objects.
+   - `UserCourseDetailAPIView`: This read-only view retrieves a specific UserCourse object by its primary key.
+
+5. Video-related Views:
+   - `VideoListAPIView`: This read-only view lists all Video objects.
+   - `CreateVideoViewSet`: This view set allows creating, retrieving, updating, and deleting Video objects.
+   - `VideoDetailAPIView`: This read-only view retrieves a specific Video object by its primary key.
+
+The code follows a modular approach, with each view class handling specific operations related to Categories, Courses, UserCourses, and Videos. It utilizes Django REST Framework's generic views and viewsets for common CRUD operations. Additionally, serializers are used for data serialization and deserialization.
+
+
+
+
+### urls
+
+Now to make our class based views work we need url routing. By default we have a single urls.py file in our fciplatform directory and not in course app. So lets create a urls.py file in our app (why so ? so that django can easily find which url is working for which app, therfore instead of putting all urls in a single file its better to create seperate urls.py file for each app). Inside your course app create a new urls.py file. (you can do it by using your IDE or by following below code)
+
+for linux users
+
+$touch course/urls.py
+
+
+Before putting some code in this file go to fciplatform folder and open urls.py file. Update this file in the follwing manner
+
+	from django.contrib import admin
+	from django.urls import path, include # changes
+
+	urlpatterns = [
+	    path('admin/', admin.site.urls),
+	    path('', include('course.urls')),  # changes
+	]
+
+In short, here im telling django that im using a seperate urls.py file for my course app. Now go back to our app level url.py file (or open the urls.py file of our course app). Put the following code there
+
+	from django.urls import path
+	from rest_framework import routers
+	from .views import (
+    	CreateCategoryViewSet,
+    	CategoryListAPIView,
+    	CourseListAPIView,
+    	CreateCourseViewSet,
+    	UserCourseListAPIView,
+    	CreateUserCourseViewSet,
+    	VideoListAPIView,
+    	CreateVideoViewSet,
+	)
+	from . import views
+
+	router = routers.DefaultRouter()
+	router.register(r'categories', CreateCategoryViewSet)
+	router.register(r'courses', CreateCourseViewSet)
+	router.register(r'courses', CreateUserCourseViewSet)
+	router.register(r'videos', CreateVideoViewSet)
+
+	urlpatterns = [
+    	path('category/', CategoryListAPIView.as_view(), name='category-list'),
+    	path('course/', CourseListAPIView.as_view(), name='course-list'),
+    	path('user-course/', UserCourseListAPIView.as_view(), name='user-course-list'),
+    	path('video/', VideoListAPIView.as_view(), name='video-list'),
+
+	]+router.urls
+
+
+
+
+* what we done here ? 
+
+
+Importing necessary modules and classes:
+
+The code imports the path function from django.urls for defining URL patterns.
+The routers module from rest_framework is imported for creating default routers.
+Various views are imported from the .views module.
+Creating a router and registering view sets:
+
+A DefaultRouter object is created.
+View sets (CreateCategoryViewSet, CreateCourseViewSet, CreateUserCourseViewSet, and CreateVideoViewSet) are registered with the router for automatic URL routing.
+Defining URL patterns:
+
+The urlpatterns list is defined to handle different URLs and associate them with respective views.
+path function is used to define URL patterns and map them to corresponding view classes.
+CategoryListAPIView is mapped to the URL path 'category/' using the as_view() method.
+CourseListAPIView is mapped to the URL path 'course/' using the as_view() method.
+UserCourseListAPIView is mapped to the URL path 'user-course/' using the as_view() method.
+VideoListAPIView is mapped to the URL path 'video/' using the as_view() method.
+The router.urls are appended to the urlpatterns list to include the automatically generated URL patterns for the registered view sets.
+Additional commented paths:
+
+Several commented paths are present in the code, which can be uncommented and used to map the corresponding detail views (<int:pk>/) to their respective URLs.
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
