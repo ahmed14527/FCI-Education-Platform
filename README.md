@@ -21,7 +21,7 @@ Note: this guide is not for absolute beginners so im assuming that you have the 
 # Table of contents
 - [About_this_App](#About_this_App)
 - [Get_Started](#Get_Started)
-- [course-app](#Course_App)
+- [course_app](#Course_App)
   * [models](#models)
   * [migrations](#migrations)
   * [admin](#admin)
