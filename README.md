@@ -453,6 +453,10 @@ Several commented paths are present in the code, which can be uncommented and us
 
 
 
+Every time we create a new application, we follow the same steps and add the application within the project settings and upload it to our server.
+
+
+
 
 
 
