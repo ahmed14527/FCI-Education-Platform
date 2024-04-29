@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'Queiz',
     'drf_yasg',
     "drf_spectacular",
+    'ml',
 
 
 

@@ -51,6 +51,7 @@ urlpatterns = [
     path('', include('course.urls')),
     path('', include('Queiz.urls')),
     path('', include('sheets.urls')),
+    path('', include('ml.urls')),
     path('users/', UserListView.as_view(), name='user-list'),
     path('api-profile/', user_profile, name='user-profile'),
     path('', include('communications.urls')),
