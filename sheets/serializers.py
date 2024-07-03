@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Sheet
+from .models import Sheets
 
 
 
 
-class SheetSerializer(serializers.ModelSerializer):
+class SheetsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Sheet
+        model = Sheets
         fields = '__all__'

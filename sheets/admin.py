@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Sheet
+from .models import Sheets
 
-admin.site.register(Sheet)
+admin.site.register(Sheets)
